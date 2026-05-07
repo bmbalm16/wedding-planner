@@ -2,9 +2,9 @@ import { redirect } from "next/navigation";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import AppShell from "@/components/layout/AppShell";
-import DashboardClient from "@/components/DashboardClient";
+import VendorList from "@/components/vendors/VendorList";
 
-export default async function HomePage() {
+export default async function VendorsPage() {
   const cookieStore = await cookies();
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -22,7 +22,7 @@ export default async function HomePage() {
 
   return (
     <AppShell>
-      <DashboardClient userId={user.id} />
+      <VendorList />
     </AppShell>
   );
 }
